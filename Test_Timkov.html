@@ -14,7 +14,7 @@ text-decoration: underline;
 
 </head>
 <body>
-	<div class="border" >Задание №1 </div>
+	<div  >Задание №1 </div>
 	<big>
 		<h1>Тимков Евгений Владимирович </h1>
 Дата рождения: 14.12.1977г. <br>
@@ -40,26 +40,41 @@ text-decoration: underline;
 <br>
 	</big>
 
-<div >Задание №2 </div>
+																								<div >Задание №2 </div>
+<p>Необходимо написать функцию GetMin(arr), которая возвращает минимальный элемент массива </p>
 <br>
 
 	<script >
 	let mass2=[2,4,5,7,9,4,1,16];
-	let min=mass2[0];
-document.write ( "Всходные данные "+ mass2);
-function GetMin (arr){
-for (let i = 0; i <arr.length; i++) {
 
-	if (mass2[i]<=min) min=mass2[i];
-	
+document.write ( "Всходные данные "+ mass2);
+
+
+	function GetMin(arr){
+ let result=arr.reduce(function(min,item){
+
+
+		if (item<=min) min=item;
+		return min;
+		})
+return result;
 }
-return min
+	console.log( "	Задание №2 Минимальное число "+GetMin(mass2));
+
+	function GetMin2(arr){
+		 
+let result=arr.reduce((min,item)=>{		if (item<=min) min=item;
+	return min;	})
+return result;	
 }
-	document.write ( "	 Минимальное число "+ GetMin(mass2));
+		console.log( " Вторая версия - Минимальное число "+GetMin2(mass2));
+
+
 	</script>
 <br>
 <br>		
-<div  >Задание №3</div>
+																								<div  >Задание №3</div>
+<p> Необходимо написать функцию, которая фильтрует массив оставляя только парные числа</p>
  <br>	
 <script >
 
@@ -69,33 +84,32 @@ document.write ( "Всходные данные "+ mass2);
 function getEven(arr){
 
 for (let i = 0; i <arr.length; i++) {
-	if (arr[i]%2!=0) continue; massPar.push(arr[i])
+	if (arr[i]%2==0)  massPar.push(arr[i]);
 }
 return massPar;
 }
-document.write ( "	Результат  парных чисел		"+ getEven(mass2));
+console.log ( "Задание №3	Массив  парных чисел  "+ getEven(mass2));
 </script>
 
 <br>	
 <br>
-<div  >Задание №4 </div>
+																								<div  >Задание №4 </div>
+<p> Необходимо написать функцию, которая принимает параметром строку и возвращвет массив объектов, в которых содержится эта строка</p>
 <br>	
 <script >
-	let massObjects=new Array();
-	massObjects[0]={name:"Jonny Walker",birthDate:"1995-12-17"};
-	massObjects[1]={name:"Andrew",birthDate:"2001-10-29"};
-	massObjects[2]={name:"Viktor",birthDate:"1998-11-09"};
+	let massObjects=
+	[{name:"Jonny Walker",birthDate:"1995-12-17"},
+	{name:"Andrew",birthDate:"2001-10-29"},
+	{name:"Viktor",birthDate:"1998-11-09"}
+ 	
+ ];
 
-function searchByName (searchName){
- for (var i = 0; i <massObjects.length; i++) {
 
-if (searchName==massObjects[i].name)
- return document.write ( "Результат поиска	слова Andrew:   Name:" +massObjects[i].name + " birthDate: " + massObjects[i].birthDate) ;
- }
+
+function searchByName2 (searchName){
+return search=massObjects.filter(item=>item.name==="Andrew");
+
+
 }
-  searchByName("Andrew");
-	
-	</script>
-
-</body>
-</html>
+console.log( "Задание №4 массив с искомой строкой");
+console.log(  searchByName2("Andrew"));
